@@ -1,54 +1,73 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
+//Searching: Linear Search 
 
-int search(int arr[], int l, int t)
+
+void input(vector<int> v,int n)
   {
-    int i;
-    for(i = 0;i<l;i++)
+    int i = 0; 
+
+    for(i = 0;i<n;i++)
       {
-        if(arr[i] == t)
-          {
-            return i;
-          }
+        cout<<"Enter a number "<<endl; 
+        cin>>v[i];
+
+
       }
-      return -1;
+  }
+
+void disp(vector<int> v,int n)
+  { 
+
+    cout<<"The array is "<<endl; 
+    for(int i = 0;i<n;i++)
+      {
+        cout<<"\t"<<v[i]; 
+      }
+  }
+
+int search(vector<int> v,int size,int target)
+  {
+    int i,res_1; 
+    for(i = 0;i<size;i++)
+        {
+          if(v[i] == target)
+            {
+              return i; 
+            } 
+      
+        }
+
+      return -1; 
+
   }
 
 int main()
-
   {
+    int size,res; 
+    cout<<"Enter The length of the array"<<endl; 
+    cin>>size; 
 
-    int x,i,l;
-    cout<<"Enter the length of the array "<<endl;
-    cin>>l;
+    vector<int> v(size);
+    int target;
 
-    const int n = l;
-    int arr[l];
 
-    cout<<"Enter the element of the array"<<endl;
 
-    for(i = 0;i<l;i++)
+    input(v,size);
+
+    cout<<"Enter the value of the target "<<endl; 
+    cin>>target;  
+
+    res = search(v,size,target);
+
+    if(res>=0)
       {
-        int b;
-        cin>>b;
-        arr[i] = b;
+        cout<<"The element is present at index "<<res<<endl;
+      }  
+    else
+      {
+        cout<<"The element is not present in the array "<<endl; 
       }
 
-      int t;
-
-      cout<<"Enter target value"<<endl;
-      cin>>t;
-
-      int res = search(arr,l,t);
-
-       if(res > -1)
-        {
-          cout<<"The target value is at index "<<res<<endl;
-        }
-
-        else
-          {
-            cout<<"target not found"<<endl; 
-          }
-    return 0;
+    return 0; 
   }
